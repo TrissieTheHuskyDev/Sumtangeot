@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>{{ column.title }}</h1>
+    <p>{{ column.content | safe }}</p>
+
+    <a class="btn btn-dark" href="{% url 'update' column.id %}" role="button">수정</a>
+    &nbsp;&nbsp;
+    <a class="btn btn-dark" href="{% url 'delete' column.id %}" role="button">삭제</a>
+</body>
+
+</html>

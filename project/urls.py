@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('friends.urls')),
     path('reports/', include('reports.urls')),
     path('columns/', include('columns.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
