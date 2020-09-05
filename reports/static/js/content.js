@@ -12,11 +12,25 @@ function parse_cookies() {
     return cookies;
 }
 
+function validate() {
+    let comment_textarea = document.getElementById('comment');
+    let comment_text = comment_textarea.value;
+    if (comment_text == '') {
+        alert('발견 당시 상황을 설명해주세요');
+        return false;
+    }
+
+    return true;
+}
+
 function save(user_id) {
     let cookies = parse_cookies();
 
     let comment_textarea = document.getElementById('comment');
     let comment_text = comment_textarea.value;
+    if (comment_text == '') {
+        return false;
+    }
 
     let kor_name_input = document.getElementById('kor-name');
     let kor_name_text = kor_name_input.value;
@@ -37,6 +51,8 @@ function save(user_id) {
         kor_name: kor_name_text,
         images: images,
     }));
+
+    return true;
 }
 
 let images = []
@@ -80,7 +96,7 @@ $('#MultiFileUpload').dropzone({
         });
         this.on('success', function() {
             let args = Array.prototype.slice.call(arguments);
-            images = args[1]['images'];
+            images.push(args[1]['images'][0]);
         });
         // this.on('removedfile', function() {
         //     let args = Array.prototype.slice.call(arguments);

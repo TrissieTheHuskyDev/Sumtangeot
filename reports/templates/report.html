@@ -29,7 +29,7 @@
                     <br>
     
                     <div class="section">
-                        <button class="float-right" onclick="$('.carousel').carousel('next')">다음</button>
+                        <button class="float-right" onclick="if (validate()) { $('.carousel').carousel('next'); }">다음</button>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
     
                     <div class="section">
                         <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
-                        <button class="float-right" onclick="$('.carousel').carousel('next'); save({{user.id}});">완료</button>
+                        <button class="float-right" onclick="if (save({{user.id}})) { $('.carousel').carousel('next'); }">완료</button>
                     </div>
                 </div>
             </div>

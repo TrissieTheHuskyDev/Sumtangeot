@@ -1,7 +1,7 @@
 import os, json
 from pathlib import Path
-from django.views.generic.edit import FormView
 from django.shortcuts import render
+from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.conf import settings
@@ -14,16 +14,14 @@ def report(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         report = Report()
-        report = report.save(commit=False)
-        print(report)
         report.lat = data['latitude']
         report.lng = data['longitude']
         report.reporter = User.objects.get(pk=data['user_id'])
         report.comment = data['comment']
         report.kor_name = data['kor_name']
+        report.save()
         for image in data['images']:
             report.images.add(ReportImage.objects.get(pk=image))
-        report.save()
     return render(request, 'report.html')
 
 class FileFieldView(FormView):
