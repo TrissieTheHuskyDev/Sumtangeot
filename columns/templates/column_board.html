@@ -11,7 +11,7 @@
     <title>칼럼</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
-    
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Song+Myung&display=swap"
         rel="stylesheet">
@@ -82,10 +82,28 @@
             </div>
         </section>
 
+        <a href="{% url 'create' %}" class="btn btn-outline-secondary btn-sm">작성</a>
+
         <div class="album py-5 bg-light">
             <div class="container">
-
                 <div class="row">
+                    {% for column in column_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <p class="card-text">{{ column.title }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{% url 'detail' column.id %}"><button type="button" class="btn btn-sm btn-outline-secondary">자세히 보기</button></a>
+                                    </div>
+                                    <small class="text-muted">{{ column.created_at }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <div class="card-body">
@@ -218,7 +236,9 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
 
 
     </main>
