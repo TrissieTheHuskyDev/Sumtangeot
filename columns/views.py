@@ -6,3 +6,6 @@ from .forms import ColumnForm
 def create(request):
     form = ColumnForm()
     return render(request, 'column_create.html', {'form':form})
+
+def columns(request):
+    return render(request, 'columns.html')
