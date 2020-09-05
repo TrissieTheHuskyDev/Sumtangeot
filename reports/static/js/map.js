@@ -7,12 +7,15 @@ let options = {
 // 지도 인스턴스를 생성합니다
 let map = new kakao.maps.Map(container, options);
 
+let lat = 0.0;
+let lon = 0.0;
+
 if (navigator.geolocation) {
     // GeoLocation을 이용해서 접속 위치를 얻어옵니다
     navigator.geolocation.getCurrentPosition(function(position) {
         
-        let lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
+        lat = position.coords.latitude; // 위도
+        lon = position.coords.longitude; // 경도
         
         let locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
             message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다

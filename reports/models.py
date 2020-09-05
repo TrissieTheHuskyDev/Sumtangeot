@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ReportImage(models.Model):
-    image = models.ImageField(upload_to='', null=True)
+    image = models.ImageField(upload_to='report', null=True)
     
 
 class Report(models.Model):
