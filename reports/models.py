@@ -5,7 +5,7 @@ class ReportImage(models.Model):
     image = models.ImageField(upload_to='', null=True)
     
 
-class Reports(models.Model):
+class Report(models.Model):
     # 일반 제보 (필수 정보)
     # 제보 위치
     lat = models.FloatField()
