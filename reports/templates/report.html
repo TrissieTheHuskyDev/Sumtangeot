@@ -1,78 +1,82 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/report.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <h1>제보하기</h1>
-    <p>멸종위기/희귀동물을 발견했을 때 제보해주시면 전문센터에서 보호할 수 있습니다.</p>
+    <div id="slider" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+            <!--일반 제보-->
+            <div id="general-report" class="carousel-item active">
+                <div class="container">
+                    <h1 class="text-center">제보하기</h1>
+                    <p class="text-center">멸종위기/희귀동물을 발견했을 때 제보해주시면 전문센터에서 보호할 수 있습니다</p>
+    
+                    <div class="section-text"><p>발견 위치</p></div>
+                    <div id="map" style="margin:auto;width:800px;height:400px;"></div>
+    
+                    <div class="section-text"><p>설명</p></div>
+                    <div class="circler-div">
+                        <textarea id="comment" placeholder="발견 당시 상황을 설명해 주세요" rows="10"></textarea>
+                    </div>
+                    <br>
+    
+                    <div class="section">
+                        <button class="float-right" onclick="$('.carousel').carousel('next')">다음</button>
+                    </div>
+                </div>
+            </div>
 
-    <p>발견 위치</p>
-    <div id="map" style="width:500px;height:400px;"></div>
+            <!--상세 제보-->
+            <div id="detailed-report" class="carousel-item">
+                <div class="container">
+                    <h1 class="text-center">상세 정보</h1>
+                    <p class="text-center">더욱 자세한 정보를 제공해주시면 빠른 조치에 도움이 됩니다</p>
+    
+                    <div class="section-text"><p>동물 이름</p></div>
+                    <div class="circler-div">
+                        <input id="kor_name" placeholder="동물 이름을 알고계신가요?"></input>
+                    </div>
+    
+                    <div class="section-text"><p>사진</p></div>
+                    <div class="circler-div">
+                        <div style="height: 500px;"></div>
+                    </div>
+                    <br>
+    
+                    <div class="section">
+                        <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
+                        <button class="float-right" onclick="$('.carousel').carousel('next')">완료</button>
+                    </div>
+                </div>
+            </div>
 
-    <p>설명</p>
-    <textarea id="comment" placeholder="발견 당시 상황을 설명해 주세요"></textarea>
+            <!--제보 성공-->
+            <div id="report-success" class="carousel-item">
+                <div class="container center">
+                    <h1 class="text-center">감사합니다!</h1>
+                    <p class="text-center">{{user}}님의 소중하신 제보 감사합니다</p>
+                    <div class="d-flex justify-content-center section">
+                        <button class="" onclick="">홈으로</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 50px;"></div>
 
-    <button onclick="">다음</button>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
-    <script type="text/javascript">
-        let container = document.getElementById('map');
-        let options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3
-        };
-
-        let map = new kakao.maps.Map(container, options);
-
-        if (navigator.geolocation) {
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(function(position) {
-                
-                let lat = position.coords.latitude, // 위도
-                    lon = position.coords.longitude; // 경도
-                
-                let locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                    message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
-                
-                // 마커와 인포윈도우를 표시합니다
-                displayMarker(locPosition, message);
-                    
-            });
-            
-        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-            let locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
-                message = 'geolocation을 사용할수 없어요..'
-                
-            displayMarker(locPosition, message);
-        }
-
-        // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-        function displayMarker(locPosition, message) {
-            // 마커를 생성합니다
-            let marker = new kakao.maps.Marker({  
-                map: map, 
-                position: locPosition
-            }); 
-            
-            let iwContent = message, // 인포윈도우에 표시할 내용
-                iwRemoveable = true;
-
-            // 인포윈도우를 생성합니다
-            let infowindow = new kakao.maps.InfoWindow({
-                content : iwContent,
-                removable : iwRemoveable
-            });
-            
-            // 인포윈도우를 마커위에 표시합니다 
-            infowindow.open(map, marker);
-            
-            // 지도 중심좌표를 접속위치로 변경합니다
-            map.setCenter(locPosition);      
-        }
-    </script>
+    <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/content.js' %}"></script>
 </body>
 </html>
 
