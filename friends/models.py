@@ -26,7 +26,7 @@ class Friend(models.Model):
     level = models.CharField(choices=LEVEL_CHOICES, max_length=10)
     kor_name = models.CharField(max_length=30)
     scientific_name = models.CharField(max_length=100)
-    image = models.ImageField(default='static/default/default_logo.png')
+    image = models.ImageField(default='static/images/default/default_logo.png')
 
     def __str__(self):
         return self.kor_name
