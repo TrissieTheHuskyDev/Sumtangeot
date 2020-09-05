@@ -43,7 +43,11 @@ INSTALLED_APPS = [
     'columns.apps.ColumnsConfig',
     'reports.apps.ReportsConfig',
     'accounts.apps.AccountsConfig',
+
+    'ckeditor',
 ]
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
