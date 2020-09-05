@@ -91,11 +91,11 @@
   <hr id = "hi" align="center">
   <div class="row featurette">
       <div class="col-md-7">
-      {% for column in columns%}
+      {% for column in column_list %}
       <img id="box" src="{{ column.image.url }}"  alt="column_image">
         <h1> {{column.title}}</h1>
         <p> {{column.created_at}}</p>
-        <p> {{column.content}}</p>
+        <!-- <p> {{column.content}}</p> -->
       </div>
       {% endfor %}
     </div>
