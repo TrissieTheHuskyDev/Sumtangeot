@@ -72,21 +72,32 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
+  <h5>등록 되어있는 동물들을 확인하세요.</h5>
+  <hr align="center">
   <!-- 멸종위기동물들 목록 -->
   <div class="row" id="cards">
     {% for friend in friend_list %}
     <div class="col-lg-4">
       <!-- 동물 이미지 -->
-      <img class="img-circle" src="{{ friend.image.url }}" alt="friend_image" style="max-width: 300px;">
+      <img id="box" src="{{ friend.image.url }}"  alt="friend_image">
       <h2>{{ friend.kor_name }}</h2>
       <p>분류군: {{ friend.group }}</p>
       <p>등급: {{ friend.level }}</p>
-      <p><a class=" btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      <p><a class="btn btn-secondary" id = "buttoncolor" href="#" role="button">자세히 보기 &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     {% endfor %}
   </div><!-- /.row -->
-
+  <h5>최신 칼럼을 확인하세요.</h5>
+  <hr id = "hi" align="center">
+  <div class="row featurette">
+      <div class="col-md-7">
+      {% for column in columns%}
+      <img id="box" src="{{ column.image.url }}"  alt="column_image">
+        <h1> {{column.title}}</h1>
+        <p> {{column.created_at}}</p>
+        <p> {{column.content}}</p>
+      </div>
+      {% endfor %}
+    </div>
 </body>
-
 </html>
