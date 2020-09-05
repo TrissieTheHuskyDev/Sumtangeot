@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/report.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
     <title>Document</title>
 </head>
 <body>
@@ -46,7 +47,14 @@
     
                     <div class="section-text"><p>사진</p></div>
                     <div class="circler-div">
-                        <div style="height: 500px;"></div>
+                        <div style="height: 500px;">
+                            <form class="dropzone" action="{% url 'upload_report' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="fallback">
+                                    <input name="file" type="file" multiple />
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <br>
     
@@ -63,7 +71,7 @@
                     <h1 class="text-center">감사합니다!</h1>
                     <p class="text-center">{{user}}님의 소중하신 제보 감사합니다</p>
                     <div class="d-flex justify-content-center section">
-                        <button class="" onclick="">홈으로</button>
+                        <a href="{% url 'index' %}"><button>홈으로</button></a>
                     </div>
                 </div>
             </div>
@@ -75,6 +83,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/dropzone.min.js' %}"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
     <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/content.js' %}"></script>
