@@ -1,7 +1,6 @@
 {% load static %}
 <!doctype html>
 <html lang="en" class="h-100">
-
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.1.1">
-  <title>Sticky Footer Navbar Template · Bootstrap</title>
+  <title>{% block title %}{% endblock %}</title>
 
   <script type="text/javascript" nonce="61e7bcd05e42444484a84ba3ce1"
     src="//local.adguard.org?ts=1599288579070&amp;type=content-script&amp;dmn=getbootstrap.com&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1">
@@ -66,11 +65,6 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top header">
       <img src='{% static "images/logo.png" %}' class="logo">
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <!-- <div class="col-sm-10 col-md-6"></div> -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -94,24 +88,9 @@
     </nav>
   </header>
 
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <hr>
-  <!-- <nav class="navbar fixed-bottom navbar-expand-sm site-footer">
-    <a class="navbar-brand" href="#">숨탄것</a>
-    <p class="h6">숨탄 것은 생명을 가진 동물을 통칭해서 소중히 여겨 이르는 옛날 우리말입니다.</p>
-    <p class="h6">우리는 후원의 올바른 가치를 제공하고, 그로 인해 바른 세상을 함께 만들어간다고 믿으며, 멸종위기 동물의 개체수 증가를 꿈꿉니다.</p>
-  </nav> -->
+    {% block main %}
+    {% endblock %}
+  
   <!-- Site footer -->
   <footer class="site-footer">
     <div class="container">
@@ -130,8 +109,6 @@
             class="fa fa-facebook social-icons facebook"></a>
         </div>
       </div>
-
   </footer>
 </body>
-
 </html>
