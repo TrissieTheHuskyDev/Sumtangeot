@@ -1,7 +1,6 @@
 {% load static %}
 <!doctype html>
 <html lang="en" class="h-100">
-
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.1.1">
-  <title>Sticky Footer Navbar Template · Bootstrap</title>
+  <title>{% block title %}{% endblock %}</title>
 
   <script type="text/javascript" nonce="61e7bcd05e42444484a84ba3ce1"
     src="//local.adguard.org?ts=1599288579070&amp;type=content-script&amp;dmn=getbootstrap.com&amp;css=1&amp;js=1&amp;gcss=1&amp;rel=1&amp;rji=1">
@@ -57,19 +56,17 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
   </script>
 
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" type='text/css' href="{% static 'css/a.css' %}">
 </head>
 
 <body class="d-flex flex-column h-100">
   <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <img src='{% static "images/logo.png" %}'>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top header">
+      <img src='{% static "images/logo.png" %}' class="logo">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">소개</a>
           </li>
@@ -83,31 +80,35 @@
             <a class="nav-link" href="#">칼럼</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button>
-        </form>
+        
       </div>
+      <form class="form-inline header-menu">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">로그인</button>
+      </form>
     </nav>
   </header>
 
-  <body>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">숨탄것</a>
-    </nav>
-    </div>
-  </body>
-
+    {% block main %}
+    {% endblock %}
+  
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-sm-12 col-md-10">
+          <h6>숨탄것</h6>
+          <p class="text-justify">숨탄 것은 생명을 가진 동물을 통칭해서 소중히 여겨 이르는 옛날 우리말입니다.<br>우리는 후원의 올바른 가치를 제공하고, 그로 인해 바른 세상을 함께 만들어간다고 믿으며, 멸종위기 동물의 개체수 증가를 꿈꿉니다.</p>
+        </div>
+        <div class="col-sm-12 col-md-2">
+          <h6>만든사람들</h6>
+          <p class="text-justify">멋쟁이 사자처럼 8기<br>가짜개발자팀</p>
+        </div>
+        <div class="col-sm-12 col-md-12">
+          <a href="https://github.com/white-jang" target="_blank" class="fa fa-github social-icons"></a>
+          <a href="https://www.facebook.com/likelionsch" target="_blank"
+            class="fa fa-facebook social-icons facebook"></a>
+        </div>
+      </div>
+  </footer>
+</body>
 </html>

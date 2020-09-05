@@ -1,4 +1,4 @@
-div>h3 {
+css div>h3 {
     font-family: 'Song Myung', serif;
 }
 
@@ -19,4 +19,53 @@ div>p {
     width: 80%;
     margin-top: 100px;
     margin-left: 200px;
+}
+
+#box {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+hr {
+    width: 50%;
+    border: solid 1px;
+    border-color: #8c8b8b;
+    margin-bottom: -3%;
+    margin-top: 3%;
+}
+
+h5 {
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-top: 8%;
+    text-align: center;
+    margin-left: 3%;
+}
+
+.col-lg-4 {
+    margin-left: -9%;
+}
+
+#buttoncolor {
+    background-color: #759B75;
+    border: none;
+}
+
+#hi {
+    margin-bottom: 5%;
 }

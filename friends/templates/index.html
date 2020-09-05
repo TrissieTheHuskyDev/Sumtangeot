@@ -1,11 +1,8 @@
+{% extends 'a.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>숨탄것 - 메인</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}숨탄것 - 메인{% endblock %}
+{% block main %} 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Song+Myung&display=swap"
@@ -29,15 +26,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-</head>
-
+</head> 
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <body>
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{% static 'images/main_fox.jpg' %}" class="d-block w-100" alt="...">
@@ -72,21 +64,31 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
+  <h5>등록 되어있는 동물들을 확인하세요.</h5>
+  <hr align="center">
   <!-- 멸종위기동물들 목록 -->
   <div class="row" id="cards">
     {% for friend in friend_list %}
     <div class="col-lg-4">
       <!-- 동물 이미지 -->
-      <img class="img-circle" src="{{ friend.image.url }}" alt="friend_image" style="max-width: 300px;">
+      <img id="box" src="{{ friend.image.url }}"  alt="friend_image">
       <h2>{{ friend.kor_name }}</h2>
       <p>분류군: {{ friend.group }}</p>
       <p>등급: {{ friend.level }}</p>
-      <p><a class=" btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      <p><a class="btn btn-secondary" id = "buttoncolor" href="#" role="button">자세히 보기 &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
     {% endfor %}
   </div><!-- /.row -->
-
-</body>
-
-</html>
+  <h5>최신 칼럼을 확인하세요.</h5>
+  <hr id = "hi" align="center">
+  <div class="row featurette">
+      <div class="col-md-7">
+      {% for column in column_list %}
+      <img id="box" src="{{ column.image.url }}"  alt="column_image">
+        <h1> {{column.title}}</h1>
+        <p> {{column.created_at}}</p>
+        <!-- <p> {{column.content}}</p> -->
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}
