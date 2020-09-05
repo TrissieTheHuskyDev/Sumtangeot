@@ -1,10 +1,4 @@
 from django import forms
-from .models import ReportImage
 
-class ReportImageForm(forms.ModelForm):
-    class Meta:
-        model = ReportImage
-        fields = ('image',)
-        labels = {
-            'image': ''
-        }
+class FileFieldForm(forms.Form):
+    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))

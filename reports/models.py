@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class ReportImage(models.Model):
-    image = models.ImageField(upload_to='report', null=True)
+    image = models.ImageField(upload_to='report')
     
 
 class Report(models.Model):
@@ -22,3 +22,6 @@ class Report(models.Model):
     kor_name = models.CharField(max_length=30)
     # 제보 당시 사진들
     images = models.ManyToManyField(ReportImage, null=True)
+
+    def __str__(self):
+        return str(self.pk)

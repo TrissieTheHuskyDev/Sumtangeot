@@ -46,16 +46,12 @@
                     </div>
     
                     <div class="section-text"><p>사진</p></div>
-                    <div class="circler-div">
-                        <div style="height: 500px;">
-                            <form class="dropzone" action="{% url 'upload_report' %}" method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <div class="fallback">
-                                    <input name="file" type="file" multiple />
-                                </div>
-                            </form>
+                    <form method="post" enctype="multipart/form-data" class="dropzone clsbox circler-div" id="MultiFileUpload">
+                        <div class="fallback">
+                            <input id="file" name="file" type="file" multiple="multiple"/>
+                            <input type="submit" value="Upload"/>
                         </div>
-                    </div>
+                    </form>
                     <br>
     
                     <div class="section">

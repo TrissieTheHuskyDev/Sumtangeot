@@ -1,9 +1,9 @@
 // 사이트 쿠키를 가져옵니다
 function parse_cookies() {
-    var cookies = {};
+    let cookies = {};
     if (document.cookie && document.cookie !== '') {
         document.cookie.split(';').forEach(function (c) {
-            var m = c.trim().match(/(\w+)=(.*)/);
+            let m = c.trim().match(/(\w+)=(.*)/);
             if(m !== undefined) {
                 cookies[m[1]] = decodeURIComponent(m[2]);
             }
@@ -35,27 +35,70 @@ function save(user_id) {
         user_id: user_id,
         comment: comment_text,
         kor_name: kor_name_text,
+        images: images,
     }));
 }
 
-Dropzone.options.fileDropzone = {
-    url: 'http://127.0.0.1:8000/reports/upload',
-    init: function() {
-        var submitButton = document.querySelector("#btn-upload-file");
-        var myDropzone = this;
-        submitButton.addEventListener("click", function () {
-            console.log("업로드");
-            myDropzone.processQueue(); 
-        });
-    },
+let images = []
+let csrftoken = parse_cookies()['csrftoken'];
+
+Dropzone.autoDiscover = false;
+$('#MultiFileUpload').dropzone({
+    url: "http://127.0.0.1:8000/reports/fileupload/",
+    crossDomain: false,
+    paramName: "file",
+    parallelUploads: 5,
     autoProcessQueue: true,
-    clickable: true,
-    thumbnailHeight: 90,
-    thumbnailWidth: 90,
-    maxFiles: 5,
-    maxFilesize: 10,
-    parallelUploads: 99,
-    addRemoveLinks: true,
-    dictRemoveFile: '삭제',
-    uploadMultiple: true,
+    filesizeBase: 1024,
+    maxFilesize: 10000,
+    dictRemoveFileConfirmation: null,
+    init: function () {
+        this.on("uploadprogress", function (file, progress, bytesSent) {
+            progress = bytesSent / file.size * 100;
+        });
+        this.on("maxfilesexceeded", function (data) {
+            let res = eval('(' + data.xhr.responseText + ')');
+        });
+        this.on("addedfile", function (file) {
+            let removeButton = Dropzone.createElement("<a data-dz-remove " +
+                "class='del_thumbnail btn btn-default'><span class='glyphicon glyphicon-trash'></span>삭제</a>");
+            let _this = this;
+            removeButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                _this.removeFile(file);
+            });
+            file.previewElement.appendChild(removeButton);
+        });
+        this.on("error", function (file, message) {
+
+            console.log(message);
+            this.removeFile(file);
+        });
+        this.on('sending', function (file, xhr, formData) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        });
+        this.on('success', function() {
+            let args = Array.prototype.slice.call(arguments);
+            images = args[1]['images'];
+        });
+        // this.on('removedfile', function() {
+        //     let args = Array.prototype.slice.call(arguments);
+        //     console.log(args);
+        // })
+    }
+});
+
+Dropzone.prototype.filesize = function (size) {
+    filesizecalculation(size)
 };
+
+function filesizecalculation(size) {
+    if (size < 1024 * 1024) {
+        return "<strong>" + (Math.round(Math.round(size / 1024) * 10) / 10) + " KB</strong>";
+    } else if (size < 1024 * 1024 * 1024) {
+        return "<strong>" + (Math.round((size / 1024 / 1024) * 10) / 10) + " MB</strong>";
+    } else if (size < 1024 * 1024 * 1024 * 1024) {
+        return "<strong>" + (Math.round((size / 1024 / 1024 / 1024) * 10) / 10) + " GB</strong>";
+    }
+}
