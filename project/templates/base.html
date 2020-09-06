@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="kr" class="h-100">
+
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,9 +48,12 @@
         </ul>
 
       </div>
-      <form class="form-inline header-menu">
+      <a href="{% url 'login' %}" class="header-menu">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">로그인</button>
-      </form>
+      </a>
+      <a href="{% url 'signup' %}" class="header-menu">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">회원가입</button>
+      </a>
     </nav>
   </header>
 
