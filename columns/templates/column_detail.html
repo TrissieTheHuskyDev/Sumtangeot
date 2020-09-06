@@ -1,42 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}숨탄것 - 칼럼글{% endblock %}
+{% block link %}{% static 'css/columns.css' %}{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
+{% block main %}
+<section class="jumbotron text-center" style="padding-top: 200px;">
+    <div class="container">
+        <h1 class="hi">우리 모두는 서로의 운명이다</h1>
+        <p class="lead text-muted">멸종위기동물과 함께 살아가는 세상을 만들기 위한<br>공존과 화해의 메시지</p>
+    </div>
+</section>
+<div class="column-body">
     <h1>{{ column.title }}</h1>
+    <hr class="mb-4">
     <p>{{ column.content | safe }}</p>
 
     {% if user.is_authenticated %}
-    <a class="btn btn-dark" href="{% url 'columns_update' column.id %}" role="button">수정</a>
-    &nbsp;&nbsp;
-    <a class="btn btn-dark" href="{% url 'columns_delete' column.id %}" role="button">삭제</a>
+    <div class="text-right">
+        <a class="btn btn-outline-secondary" href="{% url 'columns_update' column.id %}" role="button">수정</a>
+        &nbsp;&nbsp;
+        <a class="btn btn-outline-danger" href="{% url 'columns_delete' column.id %}" role="button">삭제</a>
+    </div>
     {% endif %}
+
+    <hr class="mb-4">
 
     {% if user.is_authenticated %}
     <form method="POST" action="{% url 'create_comment' column.id %}">
         {% csrf_token %}
         {{ comment_form }}
-        <input type="submit" value="확인">
+        <input class="btn btn-sm btn-outline-secondary mb-1" type="submit" value="확인">
     </form>
     {% endif %}
 
+    <hr class="mb-4">
     {% for comment in column.comment_set.all %}
-
-    <p>
-        {{ comment.author }} 🔊 {{ comment.content }}
+    <div class="mt-4">
+        {{ comment.author }} 🔊 {{ comment.content|linebreaksbr }}
         {% if user == comment.author %}
-        <a href="{% url 'delete_comment' column.id comment.id %}">
-            <button>삭제</button>
-        </a>
+        <div class="text-right">
+            <a href="{% url 'delete_comment' column.id comment.id %}" class="text-right">
+                <button class="btn btn-sm btn-outline-danger">삭제</button>
+            </a>
+        </div>
         {% endif %}
-    </p>
-
+        <p class="text-right">{{ comment.created_at }}</p>
+    </div>
+    <hr class="mb-4">
     {% endfor %}
-</body>
-
-</html>
+</div>
+{% endblock %}
