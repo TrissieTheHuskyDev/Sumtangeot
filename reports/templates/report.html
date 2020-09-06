@@ -63,8 +63,8 @@
                 <br>
 
                 <div class="section">
-                    <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
-                    <button class="float-right"
+                    <button class="next-button float-left" onclick="$('.carousel').carousel('prev')">이전</button>
+                    <button class="next-button float-right"
                         onclick="if (save({{user.id}})) { $('.carousel').carousel('next'); }">완료</button>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <h1 class="text-center">감사합니다!</h1>
                 <p class="p-tag text-center">{{user}}님의 소중하신 제보 감사합니다</p>
                 <div class="d-flex justify-content-center section">
-                    <a href="{% url 'index' %}"><button>홈으로</button></a>
+                    <a href="{% url 'index' %}"><button class="next-button">홈으로</button></a>
                 </div>
             </div>
         </div>
