@@ -1,0 +1,29 @@
+{% extends 'a.html' %}
+{% load static %}
+{% block title %}숨탄것 - 멸종위기동물들{% endblock %}
+{% block main %}
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/sum.css' %}">
+<div id = 'card-center' class="container py-5">
+<h4> 멸종위기 동물들을 소개합니다.</h4>
+<hr>
+    <div class="row pb-5 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <!-- Card-->
+            <div class="card shadow-sm border-0 rounded">
+                <div class="card-body p-0">
+                <img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
+                    <div class="p-4">
+                        <h5 class="mb-0">a</h5>
+                        <p class="small text-muted">aaa</p>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
