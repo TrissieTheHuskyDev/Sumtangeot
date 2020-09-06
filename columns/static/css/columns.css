@@ -6,3 +6,16 @@ div>h1 {
     font-family: 'Nanum Gothic', sans-serif;
     color: brown;
 }
+
+.column-form {
+    padding-top: 20px;
+}
+
+.submit-button {
+    margin-bottom: 7rem;
+}
+
+.column-body {
+    padding-left: 30rem;
+    padding-right: 30rem;
+}

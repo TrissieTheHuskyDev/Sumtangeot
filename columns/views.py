@@ -33,7 +33,7 @@ def columns_update(request, column_id):
         column_form = ColumnForm(request.POST, instance=column_update)
         if column_form.is_valid():
             column_form.save()
-            return redirect('detail', column_id)
+            return redirect('/columns/detail/'+str(column_id))
     else:
         column_form = ColumnForm(instance=column_update)
     return render(request, 'column_update.html', {'column_form':column_form})
