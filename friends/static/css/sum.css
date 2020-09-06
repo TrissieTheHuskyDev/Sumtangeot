@@ -6,11 +6,6 @@
 *
 */
 
-body {
-    background: #ffffff;
-}
-
-
 .social-link {
     width: 30px;
     height: 30px;
@@ -40,7 +35,21 @@ body {
     margin-top: 13%;
 }
 
-h4 {
+h3 {
     font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+h5 {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+p {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+#iconcenter {
     text-align: center;
 }
