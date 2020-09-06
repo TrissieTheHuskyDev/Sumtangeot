@@ -1,8 +1,13 @@
-div>h1 {
+div>h2 {
     font-family: 'Song Myung', serif;
 }
 
 .text {
     font-family: 'Nanum Gothic', sans-serif;
-    color: brown;
+}
+
+.container{ 
+    text-align:center;
+    display:inline-block;
+    vertical-align:middle;
 }
