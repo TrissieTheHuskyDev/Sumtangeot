@@ -4,18 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/report.css' %}">
     <title>Document</title>
 </head>
 <body>
-    <p>{{detail.reporter}}님이 {{detail.kor_name}}로 추정하신 동물입니다</p>
-    <p>제보 시간: {{detail.time}}</p>
-    <p>설명: {{detail.comment}}<p>
-    
-    <p>당시 사진</p>
-    {% for image in detail.images.all %}
-        <img src="{{image.image.url}}" style="width: 300px;">
-    {% empty %}
-        <p>없음</p>
-    {% endfor %}
+    <div style="margin-top: 100px;">
+        <div class="container">
+            <h1 class="text-center">제보 요약</h1>
+            <p class="text-center">{{detail.reporter}}님이 {{detail.kor_name}}로 추정하신 동물입니다</p>
+            <br>
+
+            <div class="section">
+                <p class="float-right">{{detail.time}}</p>
+            </div>
+
+            <div class="section-text"><p>설명</p></div>
+            <div class="circler-div">
+                <div disabled id="comment" rows="10">{{detail.comment}}</div>
+            </div>
+            <br>
+
+            <div class="section-text"><p>첨부자료</p></div>
+            <div class="section scrolling-wrapper">
+                <script type="text/javascript" src="{% static 'js/report_manage.js' %}"></script>
+                {% for image in detail.images.all %}
+                    <div class="card">
+                        <div id="image" onclick="setMaximizeImage('{{image.image.url}}');">
+                            <img src="{{image.image.url}}" style="width: 150px;">
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>없음</p>
+                {% endfor %}
+            </div>
+
+            <br>
+
+            <div class="section">
+                <img id="maximize-image" style="margin: auto; width: 800px;" src="">
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 50px;"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
