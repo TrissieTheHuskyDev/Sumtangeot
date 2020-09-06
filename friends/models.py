@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf.urls.static import static
 
 # Create your models here.
 
@@ -26,7 +27,7 @@ class Friend(models.Model):
     level = models.CharField(choices=LEVEL_CHOICES, max_length=10)
     kor_name = models.CharField(max_length=30)
     scientific_name = models.CharField(max_length=100)
-    image = models.ImageField(default='static/images/default_image.png')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return self.kor_name
