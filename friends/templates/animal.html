@@ -20,7 +20,7 @@
                     <h2>{{ friend.kor_name }}</h2>
                     <p>분류군: {{ friend.group }}</p>
                     <p>등급: {{ friend.level }}</p>
-                    <a class="btn btn-secondary" id="buttoncolor" href="#" role="button">자세히 보기 &raquo;</a>
+                    <a class="btn btn-secondary" id="buttoncolor" href="{% url 'detail' friend.id %}" role="button">자세히 보기 &raquo;</a>
                 </div>
             </div>
             {% endfor %}
