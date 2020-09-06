@@ -32,16 +32,21 @@
 
 #card-center {
     margin-left: 12%;
-    margin-top: 13%;
+    margin-top: 100px;
 }
 
 h3 {
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Song Myung', serif;
     text-align: center;
+}
+
+hr {
+    margin-bottom: 50px;
 }
 
 h5 {
     font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -52,4 +57,31 @@ p {
 
 #iconcenter {
     text-align: center;
+}
+
+.brand {
+    margin-top: 200px;
+    align-items: center;
+}
+
+.brand>img {
+    display: block;
+    margin: 0px auto;
+}
+
+.brand>h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#images {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.position {
+    color: gray;
+    font-family: 'Nanum Gothic', sans-serif;
 }

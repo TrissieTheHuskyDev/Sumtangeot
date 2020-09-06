@@ -1,132 +1,129 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}숨탄것 - 소개{% endblock %}
+{% block link %}{% static 'css/sum.css' %}{% endblock %}
 {% block main %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{% static 'css/sum.css' %}">
-<div id = 'card-center' class="container py-5">
-<h3> 멋쟁이 사자처럼 가짜개발자팀을 소개합니다.</h3>
-<hr>
-    <div class="row pb-5 mb-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0">
-                <img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>이남준 선생님</h5>
-                        <p>가짜개발자는 잠들지 않습니다!!! 앜!!!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+<div class="bg-light">
+    <div class="brand">
+        <h3>서비스 “숨탄것”을 소개합니다</h3>
+        <hr>
+        <img src="{% static 'images/logo.png' %}" alt="">
+        <h3>“숨탄것”</h3>
+        <p>숨탄 것은 생명을 가진 동물을 통칭해서 소중히 여겨 이르는 옛 우리말입니다.<br>
+            대한민국의 수많은 멸종위기 종들이 사용자들의 후원을 받을 수 있도록 돕는 서비스입니다.<br>
+            소중한 친구들이 멸종위기에서 벗어날 때까지 돕겠습니다.</p>
+    </div>
+    <div id='card-center' class="container py-5">
+        <h3>사이트 제작팀 “가짜개발자”를 소개합니다</h3>
+        <hr>
+        <div class="row pb-5 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded" style="margin-bottom: 20px;">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/namjoon.jpg' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>이남준 선생님</h5>
+                            <p>다이너마이트 빌런</p>
+                            <p class="position">Back-end</p>
+                            <ul id='iconcenter' class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>황상범 선생님</h5>
-                        <p>헤더부터 푸터까지!!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/sangbeom.png' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>황상범 선생님</h5>
+                            <p>헤더부터 푸터까지!!</p>
+                            <p class="position">Back-end</p>
+                            <ul id='iconcenter' class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>장하얀 조장님</h5>
-                        <p>중간 점검 실시합니다앜!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/hayan.jpg' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>장하얀 조장님</h5>
+                            <p>중간 점검 실시합니다!! 앜!</p>
+                            <p class="position">Manager</p>
+                            <ul id='iconcenter' class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>박채은</h5>
-                        <p>앜!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/chaeeun.jpg' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>박채은</h5>
+                            <p>앜!</p>
+                            <p class="position">Front-end</p>
+                            <ul id='iconcenter' class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>신재준</h5>
-                        <p>앜!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/jaejun.jpg' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>신재준</h5>
+                            <p>앜!</p>
+                            <p class="position">Front-end</p>
+                            <ul id='iconcenter' class="social mb-0 list-inline mt-3">
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item m-0"><a href="#" class="social-link"><i
+                                            class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>주은지</h5>
-                        <p>살...려....앜!</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-                <div class="card-body p-0"><img src="{% static 'images/mascot_img.png' %}" alt="" class="w-100 card-img-top">
-                    <div class="p-4">
-                        <h5>몽총여우</h5>
-                        <p>숨탄이 데뷔! 몽총미가 특징</p>
-                        <ul id = 'iconcenter' class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                            <li class="list-inline-item m-0"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <!-- Card-->
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body p-0">
+                        <img src="{% static 'images/mascot_img.png' %}" class="w-100 card-img-top" id="images">
+                        <div class="p-4">
+                            <h5>주은지</h5>
+                            <p>살...려....앜!</p>
+                            <p class="position">Full-stack</p>
+                        </div>
                     </div>
                 </div>
             </div>
