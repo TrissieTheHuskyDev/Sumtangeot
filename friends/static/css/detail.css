@@ -1,0 +1,22 @@
+.container{
+    padding-top: 4000rem;
+    
+}
+
+
+.friend{
+    height: 100%;
+}
+
+
+.col-md-4{
+    width: 100px;
+    max-width:100%;
+    height: auto;
+}
+
+
+#buttoncolor{
+    background-color: #759B75;
+    border: none;
+}
