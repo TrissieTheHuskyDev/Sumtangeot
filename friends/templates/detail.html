@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}숨탄것 - 멸종 위기 동물들{% endblock %}
+{% block main %}
+
+<div class="container">
+    <div id="animal" class="row featurette">
+        <div class="col-md-6">
+            <h2 class="featurette-heading">{{ friend.kor_name }}</h2>
+            <h3 class="featurette-heading">{{ friend.level }}</h3>
+            <h4 class="featurette-heading">{{ friend.scientific_name }}</h4>
+            <!-- <p class="lead">{{ friend.description }}</p> -->
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="{% url 'index' %}" class="btn btn-sm btn-outline-secondary">확인</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            {% if column.image %}
+            <img src="{{ friend.image.url }}" width="150%" alt="friend_image">
+            {% else %}
+            <img src="{% static 'images/default_image.png' %}" width="150%" alt="friend_no_image">
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
