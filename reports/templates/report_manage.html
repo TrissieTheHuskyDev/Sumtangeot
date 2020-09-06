@@ -11,41 +11,24 @@
     <div id="map" class="map"></div>
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
+    <script type="text/javascript" src="{% static 'js/report_manage.js' %}"></script>
     <script type="text/javascript">
-        let container = document.getElementById('map');
-        let options = {
-            center: new kakao.maps.LatLng(36.76945236756954, 126.93164179306778),
-            level: 5
-        };
-        let map = new kakao.maps.Map(container, options);
-
-        let marker;
-        let infowindow;
-        let iwContent
-
-        {% for report in reports %}
-            marker = new kakao.maps.Marker({  
-                map: map, 
-                position: new kakao.maps.LatLng({{report.lat}}, {{report.lng}})
-            });
-
-            iwContent = `
+        loadMap();
+    </script>
+    {% for report in reports %}
+        <script type="text/javascript">
+            createMarker(
+                {{report.lat}},
+                {{report.lng}},
+                `
                 <div style="padding: 5px;">
                     <p>{{report.reporter}}님이 제보하셨습니다</p>
                     <p>{{report.time}}</p>
                     <a href="{% url 'report_manage_detail' report.id %}">자세히보기</a>
-                </div>             
-            `;
-
-            // 인포윈도우를 생성합니다
-            infowindow = new kakao.maps.InfoWindow({
-                content : iwContent,
-                removable : true
-            });
-            
-            // 인포윈도우를 마커위에 표시합니다 
-            infowindow.open(map, marker);
-        {% endfor %}
-    </script>
+                </div>
+                `
+            );
+        </script>
+    {% endfor %}
 </body>
 </html>
