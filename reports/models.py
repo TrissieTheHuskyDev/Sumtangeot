@@ -21,7 +21,7 @@ class Report(models.Model):
     # 동물 이름
     kor_name = models.CharField(max_length=30)
     # 제보 당시 사진들
-    images = models.ManyToManyField(ReportImage, null=True)
+    images = models.ManyToManyField(ReportImage)
 
     def __str__(self):
         return str(self.pk)
