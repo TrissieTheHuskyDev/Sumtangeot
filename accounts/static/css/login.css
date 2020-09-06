@@ -1,0 +1,12 @@
+h2 {
+    font-family: 'Song Myung', serif;
+}
+
+.lead {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.main {
+    display: block;
+    margin: 150px auto;
+}
