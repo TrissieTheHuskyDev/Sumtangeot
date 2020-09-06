@@ -1,6 +1,6 @@
 import os, json
 from pathlib import Path
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -23,6 +23,14 @@ def report(request):
         for image in data['images']:
             report.images.add(ReportImage.objects.get(pk=image))
     return render(request, 'report.html')
+
+def report_manage(request):
+    reports = Report.objects.all()
+    return render(request, 'report_manage.html', {'reports': reports})
+
+def report_manage_detail(request, pk):
+    detail = get_object_or_404(Report, pk=pk)
+    return render(request, 'report_manage_detail.html', {'detail': detail})
 
 class FileFieldView(FormView):
     form_class = FileFieldForm
