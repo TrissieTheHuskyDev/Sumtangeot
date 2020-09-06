@@ -30,20 +30,20 @@
   <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top header">
-      <img src='{% static "images/logo.png" %}' class="logo">
+      <a href="{% url 'index' %}"><img src='{% static "images/logo.png" %}' class="logo" alt="main_logo"></a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text" href="#">소개</a>
+            <a class="nav-link text" href="{% url 'sum' %}">소개</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text" href="#">멸종위기 동물들</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text" href="#">제보</a>
+            <a class="nav-link text" href="{% url 'report' %}">제보</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text" href="#">칼럼</a>
+            <a class="nav-link text" href="{% url 'columns_boards' %}">칼럼</a>
           </li>
         </ul>
 
