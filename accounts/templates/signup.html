@@ -4,72 +4,32 @@
 {% block link %}{% static 'css/signup.css' %}{% endblock %}
 
 {% block main %}
-<div class="box">
-<div class="container">
+<div class="container main">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72"
-            height="72">
+        <img class="d-block mx-auto mb-4" src="{% static 'images/mascot_img.png' %}" alt="" width="72" height="72">
         <h2>지구 상에서 사라져가고 있는 나는 누구일까요?</h2>
-        <p class="text">숨탄것의 가족이 되어 그들을 지켜주세요</p>
+        <p class="text">회원가입을 완료하고 숨탄것들을 도와주세요</p>
     </div>
 
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">여러분의 <br>후원을 기다려요</span>
-                <span class="badge badge-secondary badge-pill">3</span>
-            </h4>
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">한국토종여우</h6>
-                        <small class="text-muted">멸종위기종 1급</small>
-                    </div>
-                    <span class="text-muted">$12</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">담비</h6>
-                        <small class="text-muted">멸종위기종 2급</small>
-                    </div>
-                    <span class="text-muted">$14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">산양</h6>
-                        <small class="text-muted">천연기념물 제 217호</small>
-                    </div>
-                    <span class="text-muted">$13</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between bg-light">
-                    <div class="text-success">
-                        <h6 class="my-0">작은 도움이<br> 큰 힘이 될 때까지</h6>
-                        <small>우린 함께할 것입니다</small>
-                    </div>
-            </ul>
-        </div>
-        <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">회원가입하기</h4>
+    <div class="col-md">
+        <h4 class="mb-3 middle-text">회원가입하기</h4>
+        <hr class="mb-4">
+        <form class="needs-validation" method="POST" novalidate>
+            {% csrf_token %}
+            {{ regi_form.as_p }}
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address">
+                <label class="custom-control-label" for="same-address">개인정보이용에 모두 동의하십니까</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="save-info">
+                <label class="custom-control-label" for="save-info">숨탄것들을 사랑할 준비가 되셨습니까</label>
+            </div>
             <hr class="mb-4">
-            <form class="needs-validation" method="POST" novalidate>
-
-                {% csrf_token %}
-                {{ regi_form.as_p }}
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="same-address">
-                    <label class="custom-control-label" for="same-address">개인정보 이용에 모두 동의하십니까</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="save-info">
-                    <label class="custom-control-label" for="save-info">우리(동물)을 사랑할 준비가 되셨습니까</label>
-                </div>
-                <hr class="mb-4">
-                <input type="submit" class="btn btn-outline-secondary" value="회원가입">
-
-            </form>
-
-        </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-outline-dark" value="회원가입">
+            </div>
+        </form>
     </div>
 </div>
-</div> 
 {% endblock %}

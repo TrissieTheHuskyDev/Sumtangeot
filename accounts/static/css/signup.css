@@ -1,4 +1,4 @@
-div>h2 {
+h2 {
     font-family: 'Song Myung', serif;
 }
 
@@ -6,8 +6,11 @@ div>h2 {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.container{ 
-    text-align:center;
-    display:inline-block;
-    vertical-align:middle;
+.main {
+    display: block;
+    margin: 150px auto;
+}
+
+.middle-text {
+    text-align: center;
 }
