@@ -12,6 +12,9 @@
 
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
     <script type="text/javascript" src="{% static 'js/report_manage.js' %}"></script>
+    <script type="text/javascript">
+        loadMap();
+    </script>
     {% for report in reports %}
         <script type="text/javascript">
             createMarker(

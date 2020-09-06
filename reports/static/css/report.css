@@ -57,6 +57,10 @@ input {
     width: 100vw;
 }
 
+#image:hover {
+    cursor: pointer;
+}
+
 .circler-div {
     margin: auto;
     width: 800px;
@@ -78,6 +82,12 @@ input {
     width: 800px;
 }
 
-.image-uploader {
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
 
+.scrolling-wrapper > .card {
+    display: inline-block;
 }
