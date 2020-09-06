@@ -7,6 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    {{detail}}
+    <p>{{detail.reporter}}님이 {{detail.kor_name}}로 추정하신 동물입니다</p>
+    <p>제보 시간: {{detail.time}}</p>
+    <p>설명: {{detail.comment}}<p>
+    
+    <p>당시 사진</p>
+    {% for image in detail.images.all %}
+        <img src="{{image.image.url}}" style="width: 300px;">
+    {% empty %}
+        <p>없음</p>
+    {% endfor %}
 </body>
 </html>
