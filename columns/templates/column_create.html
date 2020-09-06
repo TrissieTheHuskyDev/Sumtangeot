@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}숨탄것 - 칼럼 작성{% endblock %}
+{% block link %}{% static 'css/columns.css' %}{% endblock %}
+
+
+{% block main %}
+<section class="jumbotron text-center" style="padding-top: 200px;">
+    <div class="container">
+        <h1 class="hi">우리 모두는 서로의 운명이다</h1>
+        <p class="lead text-muted">멸종위기동물과 함께 살아가는 세상을 만들기 위한<br>공존과 화해의 메시지</p>
+    </div>
+</section>
+<div class="column-form text-center">
     <form method="POST" enctype="multipart/form-data" novalidate>
-    {% csrf_token %}
+        {% csrf_token %}
         {{ column_form.media }}
         {{ column_form.as_p }}
 
-        <input class="" type="submit" value="제출하기">
+        <input class="btn btn-outline-secondary submit-button" type="submit" value="제출하기">
     </form>
-    
-</body>
-</html>
+<div>
+{% endblock %}

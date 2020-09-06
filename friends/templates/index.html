@@ -60,24 +60,40 @@
       <h2>{{ friend.kor_name }}</h2>
       <p>분류군: {{ friend.group }}</p>
       <p>등급: {{ friend.level }}</p>
-      <p><a class="btn btn-secondary" id="buttoncolor" href="{% url 'detail' friend.id %}" role="button">자세히 보기 &raquo;</a></p>
+      <p><a class="btn btn-secondary" id="buttoncolor" href="{% url 'detail' friend.id %}" role="button">자세히 보기
+          &raquo;</a></p>
     </div>
     {% endfor %}
   </div><!-- /.row -->
 </div>
 
+
 <div class="columns">
   <h5>최신 칼럼을 확인하세요.</h5>
   <hr id="column" align="center">
-  <div class="row featurette">
-    {% for column in column_list %}
-    <div class="col-md-7">
-      <img id="box" src="{{ column.image.url }}" alt="column_image">
-      <h1> {{column.title}}</h1>
-      <p> {{column.created_at}}</p>
-      <p> {{column.content}}</p>
+
+  <div class="album py-5">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="row featurette"> -->
+        {% for column in column_list %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <p class="card-text">{{ column.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'columns_detail' column.id %}"><button type="button"
+                      class="btn btn-sm btn-outline-secondary">자세히 보기</button></a>
+                </div>
+                <small class="text-muted">{{ column.created_at }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-    {% endfor %}
   </div>
 </div>
 {% endblock %}

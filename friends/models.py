@@ -28,6 +28,7 @@ class Friend(models.Model):
     kor_name = models.CharField(max_length=30)
     scientific_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
+    description = models.TextField()
 
     def __str__(self):
         return self.kor_name

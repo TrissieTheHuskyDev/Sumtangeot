@@ -1,87 +1,94 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block title %}숨탄것 - 제보{% endblock %}
+{% block link %}{% static 'css/report.css' %}{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/report.css' %}">
-    <link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    <div id="slider" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
-            <!--일반 제보-->
-            <div id="general-report" class="carousel-item active">
-                <div class="container">
-                    <h1 class="text-center">제보하기</h1>
-                    <p class="text-center">멸종위기/희귀동물을 발견했을 때 제보해주시면 전문센터에서 보호할 수 있습니다</p>
-    
-                    <div class="section-text"><p>발견 위치</p></div>
-                    <div id="map" style="margin:auto;width:800px;height:400px;"></div>
-    
-                    <div class="section-text"><p>설명</p></div>
-                    <div class="circler-div">
-                        <textarea id="comment" placeholder="발견 당시 상황을 설명해 주세요" rows="10"></textarea>
-                    </div>
-                    <br>
-    
-                    <div class="section">
-                        <button class="float-right" onclick="if (validate()) { $('.carousel').carousel('next'); }">다음</button>
-                    </div>
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
+
+<div style="padding-top: 6rem;"></div>
+
+<div id="slider" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner">
+        <!--일반 제보-->
+        <div id="general-report" class="carousel-item active">
+            <div class="container">
+                <h1 class="text-center">제보하기</h1>
+                <p class="p-tag text-center">멸종위기/희귀동물을 발견했을 때 제보해주시면 전문센터에서 보호할 수 있습니다</p>
+
+                <div class="section-text">
+                    <p class="p-tag">발견 위치</p>
+                </div>
+                <div id="map" style="margin:auto;width:800px;height:400px;"></div>
+
+                <div class="section-text">
+                    <p class="p-tag">설명</p>
+                </div>
+                <div class="circler-div">
+                    <textarea id="comment" placeholder="발견 당시 상황을 설명해 주세요" rows="10"></textarea>
+                </div>
+                <br>
+
+                <div class="section">
+                    <button class="next-button float-right"
+                        onclick="if (validate()) { $('.carousel').carousel('next'); }">다음</button>
                 </div>
             </div>
+        </div>
 
-            <!--상세 제보-->
-            <div id="detailed-report" class="carousel-item">
-                <div class="container">
-                    <h1 class="text-center">상세 정보</h1>
-                    <p class="text-center">더욱 자세한 정보를 제공해주시면 빠른 조치에 도움이 됩니다</p>
-    
-                    <div class="section-text"><p>동물 이름</p></div>
-                    <div class="circler-div">
-                        <input id="kor-name" placeholder="동물 이름을 알고계신가요? ex)담비"></input>
+        <!--상세 제보-->
+        <div id="detailed-report" class="carousel-item">
+            <div class="container">
+                <h1 class="text-center">상세 정보</h1>
+                <p class="p-tag text-center">더욱 자세한 정보를 제공해주시면 빠른 조치에 도움이 됩니다</p>
+
+                <div class="section-text">
+                    <p class="p-tag">동물 이름</p>
+                </div>
+                <div class="circler-div">
+                    <input id="kor-name" placeholder="동물 이름을 알고계신가요? ex)담비"></input>
+                </div>
+
+                <div class="section-text">
+                    <p class="p-tag">사진</p>
+                </div>
+                <form method="post" enctype="multipart/form-data" class="dropzone clsbox circler-div"
+                    id="MultiFileUpload">
+                    <div class="fallback">
+                        <input id="file" name="file" type="file" multiple="multiple" />
+                        <input type="submit" value="Upload" />
                     </div>
-    
-                    <div class="section-text"><p>사진</p></div>
-                    <form method="post" enctype="multipart/form-data" class="dropzone clsbox circler-div" id="MultiFileUpload">
-                        <div class="fallback">
-                            <input id="file" name="file" type="file" multiple="multiple"/>
-                            <input type="submit" value="Upload"/>
-                        </div>
-                    </form>
-                    <br>
-    
-                    <div class="section">
-                        <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
-                        <button class="float-right" onclick="if (save({{user.id}})) { $('.carousel').carousel('next'); }">완료</button>
-                    </div>
+                </form>
+                <br>
+
+                <div class="section">
+                    <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
+                    <button class="float-right"
+                        onclick="if (save({{user.id}})) { $('.carousel').carousel('next'); }">완료</button>
                 </div>
             </div>
+        </div>
 
-            <!--제보 성공-->
-            <div id="report-success" class="carousel-item">
-                <div class="container center">
-                    <h1 class="text-center">감사합니다!</h1>
-                    <p class="text-center">{{user}}님의 소중하신 제보 감사합니다</p>
-                    <div class="d-flex justify-content-center section">
-                        <a href="{% url 'index' %}"><button>홈으로</button></a>
-                    </div>
+        <!--제보 성공-->
+        <div id="report-success" class="carousel-item">
+            <div class="container center">
+                <h1 class="text-center">감사합니다!</h1>
+                <p class="p-tag text-center">{{user}}님의 소중하신 제보 감사합니다</p>
+                <div class="d-flex justify-content-center section">
+                    <a href="{% url 'index' %}"><button>홈으로</button></a>
                 </div>
             </div>
         </div>
     </div>
     <div style="padding: 50px;"></div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'js/dropzone.min.js' %}"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
-    <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/report.js' %}"></script>
-</body>
-</html>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/dropzone.min.js' %}"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6ddbe6b93f5488de7d132f95f695b2"></script>
+<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/report.js' %}"></script>
+{% endblock %}

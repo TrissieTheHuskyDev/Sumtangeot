@@ -1,22 +1,44 @@
-.container{
-    padding-top: 4000rem;
+h1{
+    font-family: 'Song Myung', serif;
     
 }
 
 
-.friend{
-    height: 100%;
+h5,h4{
+    font-family: 'Nanum Gothic', sans-serif;
+   
 }
 
-
-.col-md-4{
-    width: 100px;
-    max-width:100%;
-    height: auto;
+.card_container{
+    padding-top: 10rem;
+    width:200px; 
+    left:0; 
+    right:0; 
+    margin-left:auto; 
+    margin-right:auto;
+    
 }
 
+.card-body{
+    width:300px; 
+    left:0; 
+    right:0; 
+    margin-left:auto; 
+    margin-right:auto;
+    padding-bottom: 10rem;
+    box-sizing: border-box; 
+    resize: both; 
+}
 
+.btn btn-primary{
+    width:200px; 
+    left:0; 
+    right:0; 
+    margin-left:auto; 
+    margin-right:auto;
+}
 #buttoncolor{
     background-color: #759B75;
     border: none;
 }
+

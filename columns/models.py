@@ -26,6 +26,7 @@ class Comment(models.Model):
     content = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     column = models.ForeignKey(Column, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.content

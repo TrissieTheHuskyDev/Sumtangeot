@@ -2,15 +2,11 @@ h2 {
     font-family: 'Song Myung', serif;
 }
 
-.text {
+.lead {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
 .main {
     display: block;
     margin: 150px auto;
-}
-
-.middle-text {
-    text-align: center;
 }

@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="kr" class="h-100">
+
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,9 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Song+Myung&display=swap"
     rel="stylesheet">
@@ -29,27 +33,37 @@
   <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top header">
-      <img src='{% static "images/logo.png" %}' class="logo">
+      <a href="{% url 'index' %}"><img src='{% static "images/logo.png" %}' class="logo" alt="main_logo"></a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text" href="#">소개</a>
+            <a class="nav-link text" href="{% url 'sum' %}">소개</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text" href="#">멸종위기 동물들</a>
+            <a class="nav-link text" href="{% url 'animal' %}">멸종위기 동물들</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text" href="#">제보</a>
+            <a class="nav-link text" href="{% url 'report' %}">제보</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text" href="#">칼럼</a>
+            <a class="nav-link text" href="{% url 'columns_boards' %}">칼럼</a>
           </li>
         </ul>
 
       </div>
-      <form class="form-inline header-menu">
+      {% if user.is_authenticated %}
+      <span class="badge badge-pill badge-success">{{ user }}</span>
+      <a href="{% url 'logout' %}" class="header-menu">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">로그아웃</button>
+      </a>
+      {% else %}
+      <a href="{% url 'login' %}" class="header-menu">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">로그인</button>
-      </form>
+      </a>
+      <a href="{% url 'signup' %}" class="header-menu">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">회원가입</button>
+      </a>
+      {% endif %}
     </nav>
   </header>
 
@@ -58,7 +72,7 @@
 
   <!-- Site footer -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="footer-container">
       <div class="row mx-auto">
         <div class="col-sm-12 col-md-10">
           <h4>숨탄것</h4>
