@@ -1,7 +1,8 @@
+.vscode
 venv
 db.sqlite3
 **/__pycache__
-**/migrations/**
+**/migrations/*
 .DS_Store
 /static
 /media
