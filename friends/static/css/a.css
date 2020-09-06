@@ -18,6 +18,7 @@
 .site-footer {
     background-color: #E0E0E0;
     padding: 30px 200px 20px;
+    width: 100%;
     font-size: 15px;
     line-height: 24px;
     color: #737373;
@@ -74,7 +75,7 @@
     text-decoration: none;
 }
 
-.footer-links.inline li {
+.footer-links .inline li {
     display: inline-block;
 }
 
@@ -184,4 +185,13 @@
         margin-right: 0;
         font-weight: 600;
     }
+}
+
+h4 {
+    font-family: 'Song Myung', serif;
+    color: black;
+}
+
+.text {
+    font-family: 'Nanum Gothic', sans-serif;
 }
