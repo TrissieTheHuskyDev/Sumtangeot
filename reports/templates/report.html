@@ -29,7 +29,7 @@
                     <br>
     
                     <div class="section">
-                        <button class="float-right" onclick="$('.carousel').carousel('next')">다음</button>
+                        <button class="float-right" onclick="if (validate()) { $('.carousel').carousel('next'); }">다음</button>
                     </div>
                 </div>
             </div>
@@ -42,25 +42,21 @@
     
                     <div class="section-text"><p>동물 이름</p></div>
                     <div class="circler-div">
-                        <input id="kor-name" placeholder="동물 이름을 알고계신가요?"></input>
+                        <input id="kor-name" placeholder="동물 이름을 알고계신가요? ex)담비"></input>
                     </div>
     
                     <div class="section-text"><p>사진</p></div>
-                    <div class="circler-div">
-                        <div style="height: 500px;">
-                            <form class="dropzone" action="{% url 'upload_report' %}" method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <div class="fallback">
-                                    <input name="file" type="file" multiple />
-                                </div>
-                            </form>
+                    <form method="post" enctype="multipart/form-data" class="dropzone clsbox circler-div" id="MultiFileUpload">
+                        <div class="fallback">
+                            <input id="file" name="file" type="file" multiple="multiple"/>
+                            <input type="submit" value="Upload"/>
                         </div>
-                    </div>
+                    </form>
                     <br>
     
                     <div class="section">
                         <button class="float-left" onclick="$('.carousel').carousel('prev')">이전</button>
-                        <button class="float-right" onclick="$('.carousel').carousel('next'); save({{user.id}});">완료</button>
+                        <button class="float-right" onclick="if (save({{user.id}})) { $('.carousel').carousel('next'); }">완료</button>
                     </div>
                 </div>
             </div>

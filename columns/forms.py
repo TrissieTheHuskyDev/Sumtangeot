@@ -1,14 +1,20 @@
 from django import forms
 from .models import Column
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-class ColumnForm(forms.Form):
-    title = forms.CharField(label='제목', max_length=100)
-    content = forms.CharField(label='', widget = CKEditorWidget())
+class ColumnForm(forms.ModelForm):
+    # title = forms.CharField(label='제목', max_length=100)
+    # content = forms.CharField(label='', widget = CKEditorWidget())
 
     class Meta:
         model = Column
         fields = ['title', 'content',]
+        widgets = {
+            'title': forms.TextInput(
+                attrs={'placeholder': '제목을 입력하세요.'}
+            ),
+            'content': forms.CharField(widget=CKEditorUploadingWidget()),
+        }
     
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
