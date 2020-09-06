@@ -51,12 +51,19 @@
         </ul>
 
       </div>
+      {% if user.is_authenticated %}
+      <span class="badge badge-pill badge-success">{{ user }}</span>
+      <a href="{% url 'logout' %}" class="header-menu">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">로그아웃</button>
+      </a>
+      {% else %}
       <a href="{% url 'login' %}" class="header-menu">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">로그인</button>
       </a>
       <a href="{% url 'signup' %}" class="header-menu">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">회원가입</button>
       </a>
+      {% endif %}
     </nav>
   </header>
 
