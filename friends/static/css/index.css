@@ -62,13 +62,13 @@ h5 {
     border: none;
 }
 
-#columns {
+#column {
     margin-bottom: 5%;
 }
 
 .carousel {
     width: 80%;
-    height: 520px;
+    height: auto;
     margin: 0 auto;
 }
 
@@ -77,6 +77,15 @@ form>button {
 }
 
 .images {
+    margin-top: 160px;
+}
+
+.image {
     width: 100%;
-    margin: 0;
+    height: 100%;
+    object-fit: contain;
+}
+
+.columns {
+    margin-bottom: 250px;
 }
