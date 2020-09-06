@@ -1,5 +1,5 @@
 from django import forms
-from .models import Column
+from .models import Column, Comment
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class ColumnForm(forms.ModelForm):
@@ -28,3 +28,9 @@ class ColumnForm(forms.ModelForm):
     #     self.fields['content'].widget.attrs.update({
     #         # 'class': '클래스명',
     #     })
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('content', )
