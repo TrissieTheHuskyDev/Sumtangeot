@@ -133,10 +133,13 @@ img {
 }
 
 h2 {
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Song Myung', serif;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 #buttoncolor {
     background-color: #759B75;
+    font-size: 20px;
 }
