@@ -11,7 +11,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
 
-        
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Song+Myung&display=swap"
         rel="stylesheet">
@@ -64,7 +64,8 @@
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}"> {% endcomment %}
 </head>
 
 <body class="bg-light">
@@ -111,29 +112,32 @@
                         </div>
                 </ul>
 
-                <form class="card p-2">
+                <!-- <form class="card p-2">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="환영해요">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-secondary">회원가입</button>
                         </div>
                     </div>
-                </form>
+                </form> -->
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">회원가입하기</h4>
-                <form class="needs-validation" novalidate>
-                    <div class="row">
+                <hr class="mb-4">
+                <form class="needs-validation" method="POST" novalidate>
+                    <!-- <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">성(First name)</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                name="first_name" required>
                             <div class="invalid-feedback">
                                 Valid first name is required.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">이름(Last name)</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                            <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                name="last_name" required>
                             <div class="invalid-feedback">
                                 Valid last name is required.
                             </div>
@@ -146,7 +150,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">@</span>
                             </div>
-                            <input type="text" class="form-control" id="username" placeholder="어떤 이름을 사용하실래요?" required>
+                            <input type="text" class="form-control" id="username" placeholder="어떤 이름을 사용하실래요?"
+                                name="username" required>
                             <div class="invalid-feedback" style="width: 100%;">
                                 Your username is required.
                             </div>
@@ -155,13 +160,26 @@
 
                     <div class="mb-3">
                         <label for="email">이메일</label>
-                        <input type="email" class="form-control" id="email" placeholder="soomtangut@example.com">
+                        <input type="email" class="form-control" id="email" placeholder="soomtangut@example.com"
+                            name="email">
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                name="password" required="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputConfirmPassword">Confirm Password</label>
+                            <input type="password" id="inputConfirmPassword" class="form-control"
+                                placeholder="Confirm Password" required="">
+                        </div>
+                    </div> -->
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="address">주소</label>
                         <input type="text" class="form-control" id="address" placeholder="어디에 살고 계신가요?" required>
                         <div class="invalid-feedback">
@@ -200,7 +218,10 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="mb-4">
+                    <hr class="mb-4"> -->
+
+                        {% csrf_token %}
+                        {{ regi_form.as_p }}
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="same-address">
                         <label class="custom-control-label" for="same-address">개인정보 이용에 모두 동의하십니까</label>
@@ -210,7 +231,8 @@
                         <label class="custom-control-label" for="save-info">우리(동물)을 사랑할 준비가 되셨습니까</label>
                     </div>
                     <hr class="mb-4">
-
+                    <input type="submit" class="btn btn-outline-secondary" value="회원가입">
+                </form>
             </div>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
