@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}숨탄것 - 멸종위기동물들{% endblock %}
+{% block main %}
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/animal.css' %}">
+<div id='card-center' class="container py-5" class="w-100 card-img-top">
+    <h3> 멸종위기 동물들을 소개합니다.</h3>
+    <hr>
+    <div class="row pb-5 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            {% for friend in friend_list %}
+            {% if column.image %}
+            <div class="card shadow-sm border-0 rounded">
+                <img src="{{ friend.image.url }}" width="80%">
+                {% else %}
+                <div class="card shadow-sm border-0 rounded" margin-top="10%">
+                    <img id='images' src="{% static 'images/default_image.png' %}">
+                    {% endif %}
+                    <h2>{{ friend.kor_name }}</h2>
+                    <p>분류군: {{ friend.group }}</p>
+                    <p>등급: {{ friend.level }}</p>
+                    <a class="btn btn-secondary" id="buttoncolor" href="#" role="button">자세히 보기 &raquo;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

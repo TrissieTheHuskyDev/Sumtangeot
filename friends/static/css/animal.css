@@ -1,0 +1,80 @@
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+}
+
+.progress {
+    height: 10px;
+}
+
+#card-center {
+    margin-left: 12%;
+    margin-top: 13%;
+}
+
+h3 {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+h5 {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+p {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+#iconcenter {
+    text-align: center;
+}
+
+#buttoncolor {
+    background-color: #759B75;
+    border: none;
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+}
+
+h2 {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+#images {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
