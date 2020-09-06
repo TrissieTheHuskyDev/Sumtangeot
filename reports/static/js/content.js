@@ -96,7 +96,7 @@ $('#MultiFileUpload').dropzone({
         });
         this.on('success', function() {
             let args = Array.prototype.slice.call(arguments);
-            images.push(args[1]['images'][0]);
+            images.push(args[1]['report_image_id']);
         });
         // this.on('removedfile', function() {
         //     let args = Array.prototype.slice.call(arguments);

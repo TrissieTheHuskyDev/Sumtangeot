@@ -40,7 +40,7 @@ class FileFieldView(FormView):
         form = self.get_form(form_class)
         files = request.FILES.getlist('file')
         if form.is_valid():
-            report_images = []
+            report_image_id = None
             for f in files:
                 with open(Path(str(settings.MEDIA_ROOT) + "/report/" + f.name).resolve(), 'wb+') as destination:
                     img_temp = NamedTemporaryFile()
@@ -54,10 +54,10 @@ class FileFieldView(FormView):
                         File(img_temp)
                     )
                     report_image.save()
-                    report_images.append(report_image.id)
+                    report_image_id = report_image.id
 
                 os.remove(Path(str(settings.MEDIA_ROOT) + "/report/" + f.name).resolve())
 
-            return JsonResponse({'form': True, 'images': report_images})
+            return JsonResponse({'form': True, 'report_image_id': report_image_id})
         else:
             return JsonResponse({'form': False})
